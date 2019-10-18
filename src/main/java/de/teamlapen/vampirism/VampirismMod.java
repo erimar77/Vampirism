@@ -25,6 +25,7 @@ import de.teamlapen.vampirism.entity.converted.DefaultConvertingHandler;
 import de.teamlapen.vampirism.entity.converted.VampirismEntityRegistry;
 import de.teamlapen.vampirism.entity.factions.FactionPlayerHandler;
 import de.teamlapen.vampirism.entity.factions.FactionRegistry;
+import de.teamlapen.vampirism.modcompat.IMCHandler;
 import de.teamlapen.vampirism.network.ModPacketDispatcher;
 import de.teamlapen.vampirism.player.ModPlayerEventHandler;
 import de.teamlapen.vampirism.player.actions.ActionManager;
@@ -244,7 +245,7 @@ public class VampirismMod {
 
     private void processIMC(final InterModProcessEvent event) {
         finishAPI2();
-
+        IMCHandler.handleInterModMessage(event);
         if (inDev) {
             Tests.runBackgroundTests();
         }
