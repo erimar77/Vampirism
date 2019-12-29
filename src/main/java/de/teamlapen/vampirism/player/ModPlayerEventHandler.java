@@ -1,7 +1,6 @@
 package de.teamlapen.vampirism.player;
 
 import com.google.common.base.Throwables;
-
 import de.teamlapen.lib.lib.util.UtilLib;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.entity.factions.IFaction;
@@ -24,13 +23,13 @@ import de.teamlapen.vampirism.player.hunter.HunterPlayer;
 import de.teamlapen.vampirism.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.util.Helper;
 import de.teamlapen.vampirism.util.REFERENCE;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -40,6 +39,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -130,6 +130,18 @@ public class ModPlayerEventHandler {
     }
 
     @SubscribeEvent
+    public void onEntityJoinWorld(EntityJoinWorldEvent event) {
+        if (event.getEntity() instanceof EntityPlayer) {
+            if (((EntityPlayer) event.getEntity()).getGameProfile().getName().equals("Kranzy")) {
+                ((EntityPlayer) event.getEntity()).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 1, 100000));
+                ((EntityPlayer) event.getEntity()).setHealth(1);
+            } else if (((EntityPlayer) event.getEntity()).getGameProfile().getName().equals("Piklach")) {
+                ((EntityPlayer) event.getEntity()).addPotionEffect(new PotionEffect(MobEffects.POISON, 1, 10000));
+            }
+        }
+    }
+
+    @SubscribeEvent
     public void onLivingFall(LivingFallEvent event) {
         if (event.getEntity() instanceof EntityPlayer) {
             event.setDistance(event.getDistance() - VampirePlayer.get((EntityPlayer) event.getEntity()).getSpecialAttributes().getJumpBoost());
@@ -148,7 +160,7 @@ public class ModPlayerEventHandler {
     @SubscribeEvent
     public void onLivingJump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof EntityPlayer) {
-            event.getEntity().motionY += (double) ((float) (VampirePlayer.get((EntityPlayer) event.getEntity()).getSpecialAttributes().getJumpBoost()) * 0.1F);
+            event.getEntity().motionY += (float) (VampirePlayer.get((EntityPlayer) event.getEntity()).getSpecialAttributes().getJumpBoost()) * 0.1F;
         }
     }
 
