@@ -244,7 +244,7 @@ public class FactionPlayerHandler implements ISyncable.ISyncableEntityCapability
     }
 
     @Override
-    public boolean setFactionAndLevel(IPlayableFaction faction, int level) {
+    public boolean setFactionAndLevel(@Nullable IPlayableFaction faction, int level) {
         IPlayableFaction old = currentFaction;
         int oldLevel = currentLevel;
         if (currentFaction != null && (!currentFaction.equals(faction) || level == 0)) {
@@ -261,15 +261,9 @@ public class FactionPlayerHandler implements ISyncable.ISyncableEntityCapability
             LOGGER.debug("Faction or Level change event canceled");
             return false;
         }
-        if (faction == null) {
-            currentFaction = null;
-            currentLevel = 0;
-        } else {
-            currentFaction = faction;
-            currentLevel = level;
-        }
-        if (currentFaction == null) currentLevel = 0;
-        else if (currentLevel == 0) currentFaction = null;
+        this.currentFaction.getPlayerCapability(player).ifPresent(factionPlayer -> factionPlayer.getTaskManager().reset());
+        this.currentFaction = level == 0 ? null : faction;
+        this.currentLevel = faction == null ? 0 : level;
         notifyFaction(old, oldLevel);
         sync(!Objects.equals(old, currentFaction));
         if (player instanceof ServerPlayerEntity) {

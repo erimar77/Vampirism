@@ -94,7 +94,7 @@ public interface IFactionPlayerHandler {
      * @param level
      * @return If successful
      */
-    boolean setFactionAndLevel(IPlayableFaction faction, int level);
+    boolean setFactionAndLevel(@Nullable IPlayableFaction faction, int level);
 
     /**
      * Set the level for a faction. Only works if the player already is in the given faction.
