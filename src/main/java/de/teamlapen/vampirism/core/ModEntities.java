@@ -67,6 +67,7 @@ public class ModEntities {
     public static final EntityType<BasicHunterEntity.IMob> hunter_imob = getNull();
     public static final EntityType<AggressiveVillagerEntity> villager_angry = getNull();
     public static final EntityType<ConvertedVillagerEntity> villager_converted = getNull();
+    public static final EntityType<TaskMasterEntity> task_master = getNull();
 
     private static final Logger LOGGER = LogManager.getLogger(ModEntities.class);
 
@@ -139,6 +140,7 @@ public class ModEntities {
         registry.register(prepareEntityType("villager_angry", EntityType.Builder.create(AggressiveVillagerEntity::new, EntityClassification.CREATURE).size(0.6F, 1.95F), false));
         registry.register(prepareEntityType("villager_converted", EntityType.Builder.create(ConvertedVillagerEntity::new, VReference.VAMPIRE_CREATURE_TYPE).size(0.6F, 1.95F), false));
         registry.register(prepareEntityType("converted_horse", EntityType.Builder.create(ConvertedHorseEntity::new, EntityClassification.CREATURE).size(1.3964844F, 1.6F), false));
+        registry.register(prepareEntityType("task_master", EntityType.Builder.create(TaskMasterEntity::new, EntityClassification.CREATURE).size(0.6f, 1.95f), true));//TODO adjust
 
         //add to biomes
         for (Biome e : getZombieBiomes()) {

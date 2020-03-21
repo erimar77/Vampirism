@@ -261,7 +261,9 @@ public class FactionPlayerHandler implements ISyncable.ISyncableEntityCapability
             LOGGER.debug("Faction or Level change event canceled");
             return false;
         }
-        this.currentFaction.getPlayerCapability(player).ifPresent(factionPlayer -> factionPlayer.getTaskManager().reset());
+        if (this.currentFaction != null) {
+            this.currentFaction.getPlayerCapability(player).ifPresent(factionPlayer -> factionPlayer.getTaskManager().reset());
+        }
         this.currentFaction = level == 0 ? null : faction;
         this.currentLevel = faction == null ? 0 : level;
         notifyFaction(old, oldLevel);
