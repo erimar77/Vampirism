@@ -1,10 +1,7 @@
 package de.teamlapen.vampirism.proxy;
 
 import de.teamlapen.lib.lib.util.IInitListener;
-import de.teamlapen.vampirism.network.BloodValuePacket;
-import de.teamlapen.vampirism.network.OpenVampireBookPacket;
-import de.teamlapen.vampirism.network.PlayEventPacket;
-import de.teamlapen.vampirism.network.SkillTreePacket;
+import de.teamlapen.vampirism.network.*;
 import de.teamlapen.vampirism.player.skills.SkillTree;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -51,6 +48,12 @@ public interface IProxy extends IInitListener {
     }
 
     default void handlePlayEventPacket(PlayEventPacket msg) {
+    }
+
+    default void handleTaskFinishedPacket(TaskFinishedPacket msg) {
+    }
+
+    default void handleTaskStatusPacket(TaskStatusPacket msg) {
     }
 
     void renderScreenFullColor(int ticksOn, int ticksOff, int color);
