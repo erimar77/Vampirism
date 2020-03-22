@@ -4,6 +4,7 @@ import de.teamlapen.lib.lib.util.IInitListener;
 import de.teamlapen.vampirism.api.entity.actions.IEntityAction;
 import de.teamlapen.vampirism.api.entity.player.actions.IAction;
 import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
+import de.teamlapen.vampirism.api.entity.player.task.Task;
 import de.teamlapen.vampirism.entity.action.EntityActions;
 import de.teamlapen.vampirism.player.hunter.actions.HunterActions;
 import de.teamlapen.vampirism.player.hunter.skills.HunterSkills;
@@ -192,5 +193,10 @@ public class RegistryManager implements IInitListener {
     @SubscribeEvent
     public void onMissingMappingEntityTypes(RegistryEvent.MissingMappings<EntityType<?>> event) {
         ModEntities.fixMapping(event);
+    }
+
+    @SubscribeEvent
+    public void onRegisterTasks(RegistryEvent.Register<Task> event) {
+        ModTasks.registerTasks(event.getRegistry());
     }
 }
