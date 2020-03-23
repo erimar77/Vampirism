@@ -65,6 +65,7 @@ public class ModCommands {
                             .then(SetSwordTrainedCommand.register())
                             .then(SpawnTestAnimalCommand.register())
                             .then(HealCommand.register())
+                            .then(TaskCommand.register())
                             .then(CaptureVillageCommand.register()));
         }
     }
