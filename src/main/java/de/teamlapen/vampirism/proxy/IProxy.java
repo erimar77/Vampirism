@@ -50,7 +50,7 @@ public interface IProxy extends IInitListener {
     default void handlePlayEventPacket(PlayEventPacket msg) {
     }
 
-    default void handleTaskFinishedPacket(TaskFinishedPacket msg) {
+    default void handleTaskFinishedPacket(TaskFinishedPacket msg, PlayerEntity playerEntity) {
     }
 
     default void handleTaskStatusPacket(TaskStatusPacket msg) {
