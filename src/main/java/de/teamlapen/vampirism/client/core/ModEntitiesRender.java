@@ -11,6 +11,7 @@ import de.teamlapen.vampirism.entity.special.DraculaHalloweenEntity;
 import de.teamlapen.vampirism.entity.vampire.AdvancedVampireEntity;
 import de.teamlapen.vampirism.entity.vampire.BasicVampireEntity;
 import de.teamlapen.vampirism.entity.vampire.VampireBaronEntity;
+import de.teamlapen.vampirism.entity.vampire.VampireTaskMasterEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.BatRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -43,5 +44,7 @@ public class ModEntitiesRender {
         RenderingRegistry.registerEntityRenderingHandler(DarkBloodProjectileEntity.class, DarkBloodProjectileRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(SoulOrbEntity.class, manager -> new SoulOrbRenderer(manager, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(DummyHunterTrainerEntity.class, DummyHunterTrainerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VampireTaskMasterEntity.class, VampireTaskMasterRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(HunterTaskMasterEntity.class, HunterTaskMasterRenderer::new);
     }
 }
