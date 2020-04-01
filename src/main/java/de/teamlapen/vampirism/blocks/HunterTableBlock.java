@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  */
 public class HunterTableBlock extends VampirismBlock {
     public static final String name = "hunter_table";
-    public static final ITextComponent containerName = new TranslationTextComponent("container.hunter_table");
+    public static final ITextComponent containerName = new TranslationTextComponent("container.vampirism.hunter_table");
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     private static final VoxelShape SOUTH = makeShape();
     private static final VoxelShape WEST = UtilLib.rotateShape(SOUTH, UtilLib.RotationAmount.NINETY);

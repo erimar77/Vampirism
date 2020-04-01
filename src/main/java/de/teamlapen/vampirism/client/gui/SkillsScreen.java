@@ -95,7 +95,7 @@ public class SkillsScreen extends Screen {
             this.minecraft.displayGuiScreen(null);
         }));
         if (display) {
-            Button resetSkills = this.addButton(new Button((this.width - display_width) / 2 + 24 + 20, this.height / 2 + 74, 80, 20, UtilLib.translate("text.vampirism.skill.resetall"), (context) -> {
+            Button resetSkills = this.addButton(new Button((this.width - display_width) / 2 + 24 + 20, this.height / 2 + 74, 80, 20, UtilLib.translate("gui.vampirism.skill.resetall"), (context) -> {
                 boolean test = VampirismMod.inDev || VampirismMod.instance.getVersionInfo().getCurrentVersion().isTestVersion();
                 ConfirmScreen resetGui = new ConfirmScreen((cxt) -> {
                     if (cxt) {
@@ -192,11 +192,11 @@ public class SkillsScreen extends Screen {
     }
 
     protected void drawTitle() {
-        String title = I18n.format("text.vampirism.skills.gui_title");
+        String title = I18n.format("gui.vampirism.skills.gui_title");
         int x = (this.width - display_width) / 2;
         int y = (this.height - display_height) / 2;
         this.font.drawString(title, x + 15, y + 5, 0xFFFFFFFF);
-        String points = I18n.format("text.vampirism.skills.points_left", skillHandler.getLeftSkillPoints());
+        String points = I18n.format("gui.vampirism.skills.points_left", skillHandler.getLeftSkillPoints());
         x = (this.width + display_width) / 2 - font.getStringWidth(points);
         this.font.drawString(points, x - 15, y + 5, 0xFFFFFFFF);
     }
@@ -447,9 +447,9 @@ public class SkillsScreen extends Screen {
             if (desc != null)
                 this.font.drawSplitString(desc.getFormattedText(), m2MouseX, m2MouseY + 12, width_name, 0xff505050);
             if (result == ISkillHandler.Result.ALREADY_ENABLED) {
-                this.font.drawStringWithShadow(I18n.format("text.vampirism.skill.unlocked"), m2MouseX, m2MouseY + height_desc + 3, 0xFFFBAE00);
+                this.font.drawStringWithShadow(I18n.format("gui.vampirism.skill.unlocked"), m2MouseX, m2MouseY + height_desc + 3, 0xFFFBAE00);
             } else if (result == ISkillHandler.Result.PARENT_NOT_ENABLED) {
-                this.font.drawStringWithShadow(I18n.format("text.vampirism.skill.unlock_parent_first"), m2MouseX, m2MouseY + height_desc + 3, 0xFFA32228);
+                this.font.drawStringWithShadow(I18n.format("gui.vampirism.skill.unlock_parent_first"), m2MouseX, m2MouseY + height_desc + 3, 0xFFA32228);
             }
         }
 

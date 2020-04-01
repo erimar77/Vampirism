@@ -32,7 +32,7 @@ public class HunterBasicScreen extends ContainerScreen<HunterBasicContainer> {
     public void init() {
         super.init();
 
-        String name = I18n.format("text.vampirism.level_up");
+        String name = I18n.format("gui.vampirism.level_up");
         int wid = font.getStringWidth(name) + 5;
         int i = (this.xSize - wid) / 2;
         int j = (this.height - this.ySize) / 2;

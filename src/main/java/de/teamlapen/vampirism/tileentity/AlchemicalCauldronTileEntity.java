@@ -90,7 +90,7 @@ public class AlchemicalCauldronTileEntity extends AbstractFurnaceTileEntity {
     @Nonnull
     @Override
     public ITextComponent getDisplayName() {
-        return new TranslationTextComponent("tile.vampirism.alchemical_cauldron.display", ownerName, new TranslationTextComponent("tile.vampirism.alchemical_cauldron.name"));
+        return new TranslationTextComponent("container.vampirism.alchemical_cauldron.display", ownerName, new TranslationTextComponent("tile.vampirism.alchemical_cauldron.name"));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -259,7 +259,7 @@ public class AlchemicalCauldronTileEntity extends AbstractFurnaceTileEntity {
 
     @Override
     protected ITextComponent getDefaultName() {
-        return new TranslationTextComponent("tile.vampirism.alchemical_cauldron");
+        return new TranslationTextComponent("container.vampirism.alchemical_cauldron");
     }
 
     private boolean canPlayerCook(AlchemicalCauldronRecipe recipe) {

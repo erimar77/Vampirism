@@ -46,7 +46,7 @@ public class WeaponTableBlock extends VampirismBlock {
     public static final int MB_PER_META = 200;
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     public static final IntegerProperty LAVA = IntegerProperty.create("lava", 0, MAX_LAVA);
-    private static final ITextComponent name = new TranslationTextComponent("gui.vampirism.hunter_weapon_table");
+    private static final ITextComponent name = new TranslationTextComponent("container.vampirism.hunter_weapon_table");
     private static final VoxelShape NORTH = makeShape();
     private static final VoxelShape EAST = UtilLib.rotateShape(NORTH, UtilLib.RotationAmount.NINETY);
     private static final VoxelShape SOUTH = UtilLib.rotateShape(NORTH, UtilLib.RotationAmount.HUNDRED_EIGHTY);

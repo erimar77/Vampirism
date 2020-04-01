@@ -32,6 +32,6 @@ public class RevertBackScreen extends ConfirmScreen {
             } else {
                 Minecraft.getInstance().displayGuiScreen(null);
             }
-        }, new TranslationTextComponent("gui.vampirism.revertback.head"), new StringTextComponent(getDescription()));
+        }, new TranslationTextComponent("container.vampirism.revertback.head"), new StringTextComponent(getDescription()));
     }
 }

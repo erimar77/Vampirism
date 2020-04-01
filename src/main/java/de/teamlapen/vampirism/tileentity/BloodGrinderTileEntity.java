@@ -105,7 +105,7 @@ public class BloodGrinderTileEntity extends InventoryTileEntity implements ITick
 
     @Override
     protected ITextComponent getDefaultName() {
-        return new TranslationTextComponent("tile.vampirism.blood_grinder");
+        return new TranslationTextComponent("container.vampirism.blood_grinder");
     }
 
     private boolean pullItems() {

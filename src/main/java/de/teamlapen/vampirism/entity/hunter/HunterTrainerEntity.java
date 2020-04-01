@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * Hunter Trainer which allows Hunter players to level up
  */
 public class HunterTrainerEntity extends HunterBaseEntity implements LookAtTrainerHunterGoal.ITrainer, ICaptureIgnore {
-    private static final ITextComponent name = new TranslationTextComponent("container.huntertrainer");
+    private static final ITextComponent name = new TranslationTextComponent("container.vampirism.hunter_trainer");
     private final int MOVE_TO_RESTRICT_PRIO = 3;
     private PlayerEntity trainee;
     private boolean shouldCreateHome;

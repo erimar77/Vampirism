@@ -182,7 +182,7 @@ public class InputEventPacket implements IMessage {
                             ((SkillHandler) skillHandler).writeUpdateForClient(sync);
                             HelperLib.sync((ISyncable.ISyncableEntityCapabilityInst) factionPlayer, sync, factionPlayer.getRepresentingPlayer(), false);
                         }
-                        player.sendMessage(new TranslationTextComponent("text.vampirism.skill.skills_reset"));
+                        player.sendMessage(new TranslationTextComponent("gui.vampirism.skill.skills_reset"));
                     });
                     break;
                 case TRAINERLEVELUP:

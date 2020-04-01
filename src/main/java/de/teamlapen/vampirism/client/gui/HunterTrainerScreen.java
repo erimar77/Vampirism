@@ -39,7 +39,7 @@ public class HunterTrainerScreen extends ContainerScreen<HunterTrainerContainer>
         super.init();
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-        String name = I18n.format("text.vampirism.level_up");
+        String name = I18n.format("gui.vampirism.level_up");
         this.addButton(this.buttonLevelup = new Button(i + 120, j + 24, font.getStringWidth(name) + 5, 20, name, (context) -> {
             VampirismMod.dispatcher.sendToServer(new InputEventPacket(InputEventPacket.TRAINERLEVELUP, ""));
             PlayerEntity player = Minecraft.getInstance().player;
@@ -84,7 +84,7 @@ public class HunterTrainerScreen extends ContainerScreen<HunterTrainerContainer>
         if (!container.getMissingItems().isEmpty()) {
             ItemStack missing = container.getMissingItems();
             ITextComponent item = missing.getItem() instanceof HunterIntelItem ? ((HunterIntelItem) missing.getItem()).getCustomName() : new TranslationTextComponent(missing.getTranslationKey());
-            text = new TranslationTextComponent("text.vampirism.hunter_trainer.ritual_missing_items", missing.getCount(), item.getFormattedText());
+            text = new TranslationTextComponent("gui.vampirism.hunter_trainer.ritual_missing_items", missing.getCount(), item.getFormattedText());
         }
         if (text != null) this.font.drawSplitString(text.getFormattedText(), 8, 50, this.xSize - 10, 0x000000);
     }

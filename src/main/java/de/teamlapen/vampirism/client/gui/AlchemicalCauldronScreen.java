@@ -48,7 +48,7 @@ public class AlchemicalCauldronScreen extends ContainerScreen<AlchemicalCauldron
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        String name = new TranslationTextComponent("tile.vampirism.alchemical_cauldron.display", Minecraft.getInstance().player.getDisplayName().applyTextStyle(TextFormatting.DARK_BLUE), ModBlocks.alchemical_cauldron.getNameTextComponent()).getFormattedText();
+        String name = new TranslationTextComponent("container.vampirism.alchemical_cauldron.display", Minecraft.getInstance().player.getDisplayName().applyTextStyle(TextFormatting.DARK_BLUE), ModBlocks.alchemical_cauldron.getNameTextComponent()).getFormattedText();
         this.font.drawString(name, 5, 6.0F, 0x404040);
         this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 94), 0x404040);
     }

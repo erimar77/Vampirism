@@ -338,7 +338,7 @@ public class AltarInfusionTileEntity extends InventoryTileEntity implements ITic
 
     @Override
     protected ITextComponent getDefaultName() {
-        return new TranslationTextComponent("tile.vampirism.altar_infusion");
+        return new TranslationTextComponent("container.vampirism.altar_infusion");
     }
 
     /**
@@ -353,7 +353,7 @@ public class AltarInfusionTileEntity extends InventoryTileEntity implements ITic
         if (!missing.isEmpty()) {
             if (messagePlayer) {
                 ITextComponent item = missing.getItem() instanceof PureBloodItem ? ((PureBloodItem) missing.getItem()).getCustomName() : new TranslationTextComponent(missing.getTranslationKey());
-                ITextComponent main = new TranslationTextComponent("text.vampirism.altar_infusion.ritual_missing_items", missing.getCount(), item);
+                ITextComponent main = new TranslationTextComponent("gui.vampirism.altar_infusion.ritual_missing_items", missing.getCount(), item);
                 player.sendMessage(main);
             }
 

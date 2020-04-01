@@ -34,7 +34,7 @@ public class BloodPotionTableScreen extends ContainerScreen<BloodPotionTableCont
     @Override
     public void init() {
         super.init();
-        this.addButton(this.craftBtn = new Button(this.width / 2 - 77, this.height / 2 - 78, font.getStringWidth(UtilLib.translate("gui.vampirism.blood_potion_table.create")) + 5, 20, UtilLib.translate("gui.vampirism.blood_potion_table.create"), (context) -> handleClicked()));
+        this.addButton(this.craftBtn = new Button(this.width / 2 - 77, this.height / 2 - 78, font.getStringWidth(UtilLib.translate("gui.vampirism.blood_potion_table.create")) + 5, 20, UtilLib.translate("screen.vampirism.blood_potion_table.create"), (context) -> handleClicked()));
         craftBtn.active = false;
     }
 
