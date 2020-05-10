@@ -38,6 +38,7 @@ public class ModCommands {
                             .then(FangCommand.register())
                             .then(GlowingEyeCommand.register())
                             .then(LevelCommand.register())
+                            .then(LordCommand.register())
                             .then(LevelUpCommand.register())
             );
         }
