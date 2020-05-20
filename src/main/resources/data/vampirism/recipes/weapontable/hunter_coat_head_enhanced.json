@@ -9,8 +9,7 @@
   "pattern": [
     "XYYX",
     "XZZX",
-    "XZZX",
-    "    "
+    "XZZX"
   ],
   "type": "vampirism:shaped_crafting_weapontable",
   "key": {
@@ -21,7 +20,7 @@
       "tag": "forge:gems/diamond"
     },
     "Z": {
-      "item": "vampirism:item_garlic"
+      "tag": "forge:crops/garlic"
     }
   }
 }

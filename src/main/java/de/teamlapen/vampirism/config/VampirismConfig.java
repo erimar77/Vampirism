@@ -133,6 +133,8 @@ public class VampirismConfig {
         public final ForgeConfigSpec.BooleanValue disableVampireForest;
         public final ForgeConfigSpec.BooleanValue disableHunterTentGen;
 
+        public final ForgeConfigSpec.BooleanValue infoAboutGuideAPI;
+
 
         Server(ForgeConfigSpec.Builder builder) {
             builder.comment("Server configuration settings")
@@ -165,7 +167,7 @@ public class VampirismConfig {
 
             }));
 
-            sundamageDimensionsOverrideNegative = builder.comment("Add the id of any dimension you want to disable sundamage for to this list. Overrides defaults and values added by other mods").defineList("sundamageDimensionsOverridePositive", Collections.emptyList(), (object) -> {
+            sundamageDimensionsOverrideNegative = builder.comment("Add the id of any dimension you want to disable sundamage for to this list. Overrides defaults and values added by other mods").defineList("sundamageDimensionsOverrideNegative", Collections.emptyList(), (object) -> {
                 if (object instanceof String) {
                     try {
                         new ResourceLocation((String) object);
@@ -207,6 +209,10 @@ public class VampirismConfig {
 
             builder.pop();
 
+            builder.push("internal");
+            infoAboutGuideAPI = builder.comment("Send message about Guide-API once").define("infoAboutGuideAPI", true);
+            builder.pop();
+
             builder.pop();
         }
 
@@ -231,6 +237,7 @@ public class VampirismConfig {
         public final ForgeConfigSpec.BooleanValue renderScreenOverlay;
         public final ForgeConfigSpec.ConfigValue<String> actionOrder;
         public final ForgeConfigSpec.BooleanValue disableFovChange;
+        public final ForgeConfigSpec.BooleanValue disableBloodVision;
 
         Client(ForgeConfigSpec.Builder builder) {
             builder.comment("Client configuration settings")
@@ -255,6 +262,7 @@ public class VampirismConfig {
 
             actionOrder = builder.comment("Action Order in Select Action Screen (reset with \"\"), unnamed actions will appended").define("actionOrder", "");
             disableFovChange = builder.comment("Disable the FOV change caused by the speed buf for vampire players").define("disableFovChange", false);
+            disableBloodVision = builder.comment("Disable blood vision rendering. Blood vision can still be activated but it does not have any effect").define("disableBloodVision", false);
 
             builder.pop();
 
@@ -271,6 +279,7 @@ public class VampirismConfig {
 
         public final ForgeConfigSpec.BooleanValue versionCheck;
         public final ForgeConfigSpec.BooleanValue collectStats;
+        public final ForgeConfigSpec.BooleanValue useVanillaCampfire;
 
 
         Common(ForgeConfigSpec.Builder builder) {
@@ -278,6 +287,8 @@ public class VampirismConfig {
                     .push("common");
             versionCheck = builder.comment("Check for new versions of Vampirism on startup").define("versionCheck", true);
             collectStats = builder.comment("Send mod version, MC version and mod count to mod author").define("collectStats", true);
+            useVanillaCampfire = builder.comment("Use the vanilla campfire block instead of Vampirism's much cooler one").define("useVanillaCampfire", false);
+
             builder.pop();
         }
 

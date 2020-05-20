@@ -128,6 +128,7 @@ public class ModItems {
     public static final GarlicItem item_garlic = getNull();
     public static final MedChairItem item_med_chair = getNull();
     public static final GarlicBreadItem garlic_bread = getNull();
+    public static final AlchemicalFireItem item_alchemical_fire = getNull();
 
     public static final TentItem item_tent = getNull();
     public static final TentItem item_tent_spawner = getNull();
@@ -180,6 +181,7 @@ public class ModItems {
     public static final SpawnEggItem hunter_trainer_spawn_egg = getNull();
 
     public static final UmbrellaItem umbrella = getNull();
+    public static final BlockItem vampire_orchid = getNull();
 
 
     static void registerCraftingRecipes() {
