@@ -1,6 +1,5 @@
 package de.teamlapen.vampirism.player.tasks;
 
-import com.google.common.collect.ImmutableList;
 import de.teamlapen.vampirism.api.entity.factions.IPlayableFaction;
 import de.teamlapen.vampirism.api.entity.player.task.Task;
 import de.teamlapen.vampirism.api.entity.player.task.TaskRequirement;
@@ -22,10 +21,11 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class TaskBuilder {
-    private final ImmutableList.Builder<TaskRequirement<?>> requirements = ImmutableList.builder();
-    private final ImmutableList.Builder<TaskReward> rewards = ImmutableList.builder();
+    private @Nullable TaskRequirement<?> requirement;
+    private @Nullable TaskReward reward;
     private @Nullable IPlayableFaction<?> faction;
     private @Nullable Supplier<Task> parentTask;
+    private @Nonnull Task.Variant variant = Task.Variant.REPEATABLE;
     private boolean useDescription = false;
 
     private TaskBuilder() {
@@ -45,54 +45,59 @@ public class TaskBuilder {
         return this;
     }
 
+    public TaskBuilder setUnique() {
+        this.variant = Task.Variant.UNIQUE;
+        return this;
+    }
+
     public TaskBuilder requireParent(@Nullable Supplier<Task> parentTask) {
         this.parentTask = parentTask;
         return this;
     }
 
     public TaskBuilder addRequirement(@Nonnull EntityType<?> entityType, int amount) {
-        this.requirements.add(new EntityRequirement(entityType, amount));
+        this.requirement = new EntityRequirement(entityType, amount);
         return this;
     }
 
     public <T extends IForgeRegistryEntry<?>> TaskBuilder addRequirement(@Nonnull ResourceLocation stat, int amount) {
-        this.requirements.add(new StatRequirement(stat, amount));
+        this.requirement = new StatRequirement(stat, amount);
         return this;
     }
 
     public TaskBuilder addRequirement(@Nonnull ItemStack itemStack) {
-        this.requirements.add(new ItemRequirement(itemStack));
+        this.requirement = new ItemRequirement(itemStack);
         return this;
     }
 
     public TaskBuilder addRequirement(@Nonnull Supplier<Boolean> supplier) {
-        this.requirements.add(new TaskRequirement<Boolean>() {
+        this.requirement = new TaskRequirement<Boolean>() {
             @Nonnull
             @Override
             public Boolean getStat() {
                 return supplier.get();
             }
-        });
+        };
         return this;
     }
 
     public TaskBuilder addRequirement(@Nonnull TaskRequirement<?> requirement) {
-        this.requirements.add(requirement);
+        this.requirement = requirement;
         return this;
     }
 
     public TaskBuilder addReward(@Nonnull ItemStack reward) {
-        this.rewards.add(new ItemReward(reward));
+        this.reward = new ItemReward(reward);
         return this;
     }
 
     public TaskBuilder addReward(@Nonnull Consumer<PlayerEntity> onFinished) {
-        this.rewards.add(onFinished::accept);
+        this.reward = onFinished::accept;
         return this;
     }
 
     public TaskBuilder addReward(@Nonnull TaskReward reward) {
-        this.rewards.add(reward);
+        this.reward = reward;
         return this;
     }
 
@@ -102,9 +107,9 @@ public class TaskBuilder {
     }
 
     public Task build(ResourceLocation registryName) {
-        ImmutableList<TaskRequirement<?>> requirements = this.requirements.build();
-        if (requirements.isEmpty()) throw new IllegalStateException("The task " + registryName + " needs Requirements");
-        return new Task(this.faction, requirements, this.rewards.build(), this.parentTask, this.useDescription).setRegistryName(registryName);
+        if (requirement == null) throw new IllegalStateException("The task " + registryName + " needs a requirement");
+        return new Task(this.variant, this.faction, this.requirement, this.reward == null ? player -> {
+        } : this.reward, this.parentTask, this.useDescription).setRegistryName(registryName);
     }
 
     public Task build(String modId, String name) {
